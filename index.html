@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List App</title>
+  <link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+  <div class="todo-wrapper">
+    <h1 class="title">Todo List</h1>
+    <form>
+      <input type="text" placeholder="What do you want to do?">
+      <button type="submit">
+        <img src="media/add.svg" alt="+">
+      </button>
+    </form>
+    <div id="todos">
+      <div class="todo-item">
+        <input type="checkbox" class="todo-status">
+        <span class="todo-text">Sleep like no tomorrow</span>
+      </div>
+      <div class="todo-item">
+        <input type="checkbox" class="todo-status">
+        <span class="todo-text">Sleep like no tomorrow</span>
+      </div>
+      <div class="todo-item">
+        <input type="checkbox" class="todo-status">
+        <span class="todo-text">Sleep like no tomorrow</span>
+      </div>
+      <div class="todo-item">
+        <input type="checkbox" class="todo-status">
+        <span class="todo-text">Sleep like no tomorrow</span>
+      </div>
+    </div>
+    <p class="status">
+      <span>Tota: 4</span>
+      <span>Todo: 4</span>
+      <span>Done: 0</span>
+    </p>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
