@@ -31,6 +31,7 @@ function renderTodoItems () {
     todosElement.innerHTML += `<div class="todo-item" data-todo_index="${todoIndex}">
       <input type="checkbox" class="todo-status" ${todo.done ? 'checked' : ''} data-todo_index="${todoIndex}">
       <span class="todo-text" data-todo_index="${todoIndex}">${todo.text}</span>
+      <img class="remove-todo" src="media/delete.svg" data-purpose="delete" data-todo_index="${todoIndex}">
     </div>`
   })
 }
@@ -63,6 +64,11 @@ function toggleTodoStatus (index) {
   updateView()
 }
 
+function removeTodo(index) {
+  todos.splice(index, 1)
+  updateView()
+}
+
 // event listeners and triggers
 todoFormElement.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -80,5 +86,14 @@ todosElement.addEventListener('click', (e) => {
 
   toggleTodoStatus(clickedTodoIndex)
 })
+
+todosElement.addEventListener('click', (e) => {
+  const { todo_index, purpose } = e.target.dataset
+
+  if (!todo_index || (!purpose || purpose !== 'delete')) return
+
+  removeTodo(todo_index)
+})
+
 
 setupTodos()

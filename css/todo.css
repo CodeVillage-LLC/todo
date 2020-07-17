@@ -86,8 +86,20 @@ form input:focus {
   display: flex;
   align-items: center;
   font-size: 1.5rem;
-  margin: 2rem 0;
+  /* margin: 0 0; */
+  padding: 1rem 1rem 1rem .5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
   user-select: none;
+}
+
+.todo-item:hover {
+  background: var(--light-grey);
+}
+
+.todo-text {
+  flex-grow: 1;
 }
 
 .todo-status {
