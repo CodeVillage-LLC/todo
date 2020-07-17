@@ -24,13 +24,13 @@ const todoItemElements = document.getElementsByClassName('todo-item')
 const todoStatElement = document.getElementById('todos-stat')
 
 /* utility functions */
-function renderTodos () {
+function renderTodoItems () {
   todosElement.innerHTML = ''
 
-  todos.forEach(todo => {
-    todosElement.innerHTML += `<div class="todo-item">
-      <input type="checkbox" class="todo-status" ${todo.done ? 'checked' : ''}>
-      <span class="todo-text">${todo.text}</span>
+  todos.forEach((todo, todoIndex) => {
+    todosElement.innerHTML += `<div class="todo-item" data-todo_index="${todoIndex}">
+      <input type="checkbox" class="todo-status" ${todo.done ? 'checked' : ''} data-todo_index="${todoIndex}">
+      <span class="todo-text" data-todo_index="${todoIndex}">${todo.text}</span>
     </div>`
   })
 }
@@ -43,17 +43,24 @@ function renderStats () {
   <span>Todo: ${pendingCount}</span>
   <span>Done: ${doneCount}</span>`
 }
+function updateView () {
+  renderTodoItems()
+  renderStats()
+}
 
 function addTodo (text) {
   todos.push({ text, done: false })
   todoInputElement.value = ''
-  renderTodos()
-  renderStats()
+  updateView()
 }
 
 function setupTodos () {
-  renderTodos()
-  renderStats()
+  updateView()
+}
+
+function toggleTodoStatus (index) {
+  todos[index].done = !todos[index].done
+  updateView()
 }
 
 // event listeners and triggers
@@ -64,6 +71,14 @@ todoFormElement.addEventListener('submit', (event) => {
   addTodo(todoText);
 });
 
-setupTodos()
-console.log(todoItemElements)
+todosElement.addEventListener('click', (e) => {
+  // console.log('todos clicked!', e)
+  // console.log(e.target.dataset['todo_index'])
+  const clickedTodoIndex = e.target.dataset.todo_index
 
+  if (!clickedTodoIndex) return
+
+  toggleTodoStatus(clickedTodoIndex)
+})
+
+setupTodos()
