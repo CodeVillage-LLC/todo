@@ -21,17 +21,9 @@ const todosElement = document.getElementById('todos');
 const todoFormElement = document.getElementById('todo-form');
 const todoInputElement =  document.getElementById('todo-input');
 const todoItemElements = document.getElementsByClassName('todo-item')
+const todoStatElement = document.getElementById('todos-stat')
 
 /* utility functions */
-function addTodo (text) {
-  const markup = `<div class="todo-item">
-    <input type="checkbox" class="todo-status">
-    <span class="todo-text">${text}</span>
-  </div>`;
-
-  todosElement.innerHTML += markup;
-}
-
 function renderTodos () {
   todosElement.innerHTML = ''
 
@@ -42,9 +34,26 @@ function renderTodos () {
     </div>`
   })
 }
+function renderStats () {
+  const todosCount = todos.length
+  const pendingCount = todos.filter(todo => !todo.done).length
+  const doneCount = todos.filter(todo => todo.done).length
+
+  todoStatElement.innerHTML = `<span>Total: ${todosCount}</span>
+  <span>Todo: ${pendingCount}</span>
+  <span>Done: ${doneCount}</span>`
+}
+
+function addTodo (text) {
+  todos.push({ text, done: false })
+  todoInputElement.value = ''
+  renderTodos()
+  renderStats()
+}
 
 function setupTodos () {
   renderTodos()
+  renderStats()
 }
 
 // event listeners and triggers
