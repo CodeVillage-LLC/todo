@@ -1,7 +1,8 @@
 // console.log('Page is ready!')
 
 /* setup and initialization */
-const todos = [
+let todos;
+const defaultTodos = [
   { text: 'Sleep like no tomorrow', done: true },
   { text: 'Cook all the food in the store', done: false },
   { text: 'Eat everything', done: false },
@@ -14,9 +15,9 @@ const todos = [
   { text: 'Promise yourself never to try that again', done: false },
   { text: 'Start coding', done: false },
   { text: 'Repeat', done: false }
-]
-let todoItemIndexInEdit = null
-const currentEdit = {}
+];
+let todoItemIndexInEdit = null;
+const currentEdit = {};
 
 /* selectors */
 const todosElement = document.getElementById('todos');
@@ -43,6 +44,7 @@ function renderTodoItems () {
     </div>`
   })
 }
+
 function renderStats () {
   const todosCount = todos.length
   const pendingCount = todos.filter(todo => !todo.done).length
@@ -52,7 +54,9 @@ function renderStats () {
   <span>Todo: ${pendingCount}</span>
   <span>Done: ${doneCount}</span>`
 }
+
 function updateView () {
+  persistTodos()
   renderTodoItems()
   renderStats()
 }
@@ -64,6 +68,13 @@ function addTodo (text) {
 }
 
 function setupTodos () {
+  let storedTodos = window.localStorage.getItem('my_todo-items')
+
+  if (storedTodos) {
+    todos = JSON.parse(storedTodos)
+  } else {
+    todos = defaultTodos
+  }
   updateView()
 }
 
@@ -88,6 +99,10 @@ function initEdit(todoIndex) {
 function editTodoItem(newText) {
   todos[todoItemIndexInEdit].text = newText
   updateView()
+}
+
+function persistTodos () {
+  window.localStorage.setItem('my_todo-items', JSON.stringify(todos))
 }
 
 // event listeners and triggers
