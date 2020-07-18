@@ -45,6 +45,7 @@ p {
 .todo-wrapper form {
   display: flex;
   align-items: stretch;
+  margin-bottom: 1rem;
 }
 
 #todo-form button[type="submit"] {
@@ -58,7 +59,7 @@ p {
 }
 
 button[type="submit"] img {
-  width: 5rem;
+  width: 3.5rem;
 }
 
 form input {
