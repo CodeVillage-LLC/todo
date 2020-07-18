@@ -121,7 +121,7 @@ form input:focus {
   height: 100%;
   border: 2px solid var(--purple);
   border-radius: 5px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+  box-shadow: 3px 4px 0px 1px rgba(0, 0, 0, .1);
   position: absolute;
   left: 0;
   top: 0;
