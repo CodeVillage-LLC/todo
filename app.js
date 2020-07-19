@@ -127,7 +127,7 @@ todosElement.addEventListener('click', (e) => {
     if (purpose === 'delete') {
       removeTodo(todo_index)
     } else if (purpose === 'edit') {
-      initEdit(todo_index)
+      initEdit(todo_index);
     }
   }
 })
@@ -147,10 +147,10 @@ editFormElement.addEventListener('submit', e => {
   if (!newTodoText) return
 
   if (newTodoText !== todos[todoItemIndexInEdit].text) {
-    editTodoItem(newTodoText)
+    editTodoItem(newTodoText);
   }
 
   editModalElement.classList.remove('active')
 })
 
-setupTodos()
+setupTodos();
