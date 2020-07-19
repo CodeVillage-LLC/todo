@@ -218,3 +218,28 @@ form input:focus {
   color: var(--purple);
   background: white;
 }
+/* FOR MOBILE SCREEN START */
+@media screen and (max-width:640px){
+
+  :root{
+    font-size:12px;
+  }
+  .todo-wrapper{
+    max-width:100vw;
+    overflow-x: hidden;
+  }
+  #todo-form input{
+    font-size: 1.4rem;
+  }
+  .todo-wrapper #todos{
+   padding: none;
+   }
+
+ /* checkbox compress fix */
+  #todos .todo-text{
+   width:50%;
+   padding-right:.4rem;
+  }
+}
+
+/* FOR MOBILE SCREEN END*/
