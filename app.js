@@ -84,21 +84,21 @@ function toggleTodoStatus (index) {
 }
 
 function removeTodo(index) {
-  todos.splice(index, 1)
+  todos.splice(index, 1);
   updateView()
 }
 
 function initEdit(todoIndex) {
   todoItemIndexInEdit = todoIndex
 
-  editModalElement.classList.add('active')
+  editModalElement.classList.add('active');
   // editStatusElement.checked = todos[todoIndex].done
   editTextElement.value = todos[todoItemIndexInEdit].text
 }
 
 function editTodoItem(newText) {
   todos[todoItemIndexInEdit].text = newText
-  updateView()
+  updateView();
 }
 
 function persistTodos () {
