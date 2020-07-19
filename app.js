@@ -80,25 +80,25 @@ function setupTodos () {
 
 function toggleTodoStatus (index) {
   todos[index].done = !todos[index].done
-  updateView()
+  updateView();
 }
 
 function removeTodo(index) {
-  todos.splice(index, 1)
-  updateView()
+  todos.splice(index, 1);
+  updateView();
 }
 
 function initEdit(todoIndex) {
-  todoItemIndexInEdit = todoIndex
+  todoItemIndexInEdit = todoIndex;
 
-  editModalElement.classList.add('active')
+  editModalElement.classList.add('active');
   // editStatusElement.checked = todos[todoIndex].done
-  editTextElement.value = todos[todoItemIndexInEdit].text
+  editTextElement.value = todos[todoItemIndexInEdit].text;
 }
 
 function editTodoItem(newText) {
   todos[todoItemIndexInEdit].text = newText
-  updateView()
+  updateView();
 }
 
 function persistTodos () {
@@ -127,7 +127,7 @@ todosElement.addEventListener('click', (e) => {
     if (purpose === 'delete') {
       removeTodo(todo_index)
     } else if (purpose === 'edit') {
-      initEdit(todo_index)
+      initEdit(todo_index);
     }
   }
 })
@@ -147,10 +147,10 @@ editFormElement.addEventListener('submit', e => {
   if (!newTodoText) return
 
   if (newTodoText !== todos[todoItemIndexInEdit].text) {
-    editTodoItem(newTodoText)
+    editTodoItem(newTodoText);
   }
 
   editModalElement.classList.remove('active')
 })
 
-setupTodos()
+setupTodos();
