@@ -230,7 +230,7 @@ form input:focus {
     overflow-x: hidden;
   }
   #todo-form input{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .todo-wrapper #todos{
    padding: none;
