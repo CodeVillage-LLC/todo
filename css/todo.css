@@ -61,7 +61,10 @@ p {
 button[type="submit"] img {
   width: 3.5rem;
 }
-
+/* img.remove-todo.rotate,
+img.rotate{
+  
+} */
 form input {
   flex-grow: 1;
   font-size: 2rem;
@@ -143,12 +146,24 @@ form input:focus {
 .todo-text {
   font-size: 1.5rem;
 }
+.status_clear-all{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right:2.4rem;
+  
+}
+.status_clear-all img{
+  cursor: pointer;
+  width:1.8rem;
 
-.status {
+}
+
+.status_clear-all .status {
   padding: 0 1rem;
 }
 
-.status span {
+.status_clear-all .status span {
   margin-right: 1rem;
 }
 

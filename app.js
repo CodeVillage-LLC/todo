@@ -30,19 +30,24 @@ const editFormElement = document.getElementById('edit-form')
 const editStatusElement = document.getElementById('edit-status')
 const editTextElement = document.getElementById('edit-text')
 const cancelEditElement = document.getElementById('cancel-edit')
+const deleteAllTodos = document.getElementById('clear-all')
 
 /* utility functions */
 function renderTodoItems () {
-  todosElement.innerHTML = ''
-
-  todos.forEach((todo, todoIndex) => {
-    todosElement.innerHTML += `<div class="todo-item" data-todo_index="${todoIndex}">
+  if(!todos){
+    todosElement.innerHTML = ''
+  }else{
+    todosElement.innerHTML = ''
+    
+    todos.forEach((todo, todoIndex) => {
+      todosElement.innerHTML += `<div class="todo-item" data-todo_index="${todoIndex}">
       <input type="checkbox" class="todo-status" ${todo.done ? 'checked' : ''} data-todo_index="${todoIndex}">
       <span class="todo-text" data-todo_index="${todoIndex}">${todo.text}</span>
       <img class="edit-todo" src="media/edit.svg" data-purpose="edit" data-todo_index="${todoIndex}">
       <img class="remove-todo" src="media/delete.svg" data-purpose="delete" data-todo_index="${todoIndex}">
-    </div>`
-  })
+      </div>`
+    })
+  }
 }
 
 function renderStats () {
@@ -104,6 +109,10 @@ function editTodoItem(newText) {
 function persistTodos () {
   window.localStorage.setItem('my_todo-items', JSON.stringify(todos))
 }
+function clearAllTodos(){
+  todos=[];
+  updateView();
+}
 
 // event listeners and triggers
 todoFormElement.addEventListener('submit', (event) => {
@@ -151,6 +160,10 @@ editFormElement.addEventListener('submit', e => {
   }
 
   editModalElement.classList.remove('active')
+})
+
+deleteAllTodos.addEventListener('click', e => {
+  clearAllTodos();
 })
 
 setupTodos()
