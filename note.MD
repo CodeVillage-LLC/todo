@@ -24,4 +24,4 @@ function renderTodoItems () {
 }
 ```
 
-- sample edit for making pull request
+- sample edit for making pull a request
