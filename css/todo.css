@@ -77,6 +77,10 @@ button[type="submit"] img {
 
 
 }
+.delete-all:hover
+{
+  transform: scale(1.1);
+}
 
 form input {
   flex-grow: 1;
@@ -159,16 +163,33 @@ form input:focus {
 .todo-text {
   font-size: 1.5rem;
 }
+
+.edit-todo,
+.remove-todo{
+  cursor: pointer;
+}
+.edit-todo:hover,
+.remove-todo:hover
+{
+  transform: scale(1.2);
+}
+
 .status_clear-all{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right:2.4rem;
+  padding:.6rem 0;
   
+  
+}
+#todos-stat{
+  display: flex;
+  align-items: center;
 }
 .status_clear-all img{
   cursor: pointer;
   width:1.8rem;
+  margin-right:2.4rem;
 
 }
 
@@ -185,6 +206,7 @@ form input:focus {
 }
 
 .modal {
+  
   position: fixed;
   top: 0;
   left: 0;
@@ -245,6 +267,23 @@ form input:focus {
   border: var(--purple) solid 2px;
   color: var(--purple);
   background: white;
+}
+/* for screen less than 1024px */
+@media screen and (max-width:1024px){
+  body{
+    max-height: 100vh;
+    overflow-y: hidden;
+  }
+  .title{
+    margin-top:.6rem;
+    padding-top:0;
+  }
+  .todo-wrapper{
+    padding-top: .5rem;
+    height: 100vh;
+    max-height:100%;
+    
+  }
 }
 /* FOR MOBILE SCREEN START */
 @media screen and (max-width:640px){

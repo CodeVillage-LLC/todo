@@ -31,6 +31,8 @@ const editStatusElement = document.getElementById('edit-status')
 const editTextElement = document.getElementById('edit-text')
 const cancelEditElement = document.getElementById('cancel-edit')
 const deleteAllTodos = document.getElementById('clear-all')
+const rotateDeleteIcon = document.getElementsByClassName('remove-todo')
+
 
 /* utility functions */
 function renderTodoItems () {
@@ -89,9 +91,12 @@ function toggleTodoStatus (index) {
 }
 
 function removeTodo(index) {
-  
-  todos.splice(index, 1)
-  updateView()
+  setTimeout(function(){
+   todos.splice(index, 1)
+    updateView()
+  },1000)
+
+  rotateDeleteIcon[index].classList.add('rotate')
 }
 
 function initEdit(todoIndex) {
