@@ -89,6 +89,7 @@ function toggleTodoStatus (index) {
 }
 
 function removeTodo(index) {
+  
   todos.splice(index, 1)
   updateView()
 }
@@ -110,8 +111,15 @@ function persistTodos () {
   window.localStorage.setItem('my_todo-items', JSON.stringify(todos))
 }
 function clearAllTodos(){
-  todos=[];
-  updateView();
+  setTimeout(function(){  
+    todos=[];
+    updateView();
+    deleteAllTodos.classList.remove('rotate');
+  },1000);
+  
+   deleteAllTodos.classList.add('rotate');
+  
+
 }
 
 // event listeners and triggers
@@ -164,6 +172,7 @@ editFormElement.addEventListener('submit', e => {
 
 deleteAllTodos.addEventListener('click', e => {
   clearAllTodos();
+  
 })
 
 setupTodos()

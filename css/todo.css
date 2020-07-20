@@ -61,10 +61,23 @@ p {
 button[type="submit"] img {
   width: 3.5rem;
 }
-/* img.remove-todo.rotate,
-img.rotate{
-  
-} */
+.remove-todo.rotate,
+.delete-all.rotate{
+ 
+  animation: rotation 2s linear;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+
+
+}
+
 form input {
   flex-grow: 1;
   font-size: 2rem;
