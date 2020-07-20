@@ -64,7 +64,7 @@ button[type="submit"] img {
 .remove-todo.rotate,
 .delete-all.rotate{
  
-  animation: rotation 2s linear;
+  animation: rotation .8s linear;
 }
 
 @keyframes rotation {
